@@ -1,5 +1,5 @@
-import 'package:ajio/screens/widgets.dart';
-import 'package:ajio/tabs/Switch.dart';
+
+
 import 'package:ajio/tabs/TRNDin.dart';
 import 'package:ajio/tabs/account.dart';
 import 'package:ajio/tabs/ajihome.dart';
@@ -20,7 +20,6 @@ class _HomeState extends State<Home> {
 
   final List _tabs = [
     Ajio(),
-   SwitchTab(),
    Explore(),
    TRNDin(),
    Categeories(),
@@ -45,9 +44,9 @@ class _HomeState extends State<Home> {
            BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.black,),
         label: 'Home',  
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.view_cozy_rounded,color: Colors.black,),
-        label: 'Switch Store',  
-        ),
+        // BottomNavigationBarItem(icon: Icon(Icons.view_cozy_rounded,color: Colors.black,),
+        // label: 'Switch Store',  
+        // ),
         BottomNavigationBarItem(icon: Icon(Icons.store_mall_directory_outlined,color: Colors.black,),
         label: 'Explore',
         ),

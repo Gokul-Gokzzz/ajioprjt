@@ -43,12 +43,13 @@ class Categeories extends StatelessWidget {
           GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
+              childAspectRatio: 2/1.5
             ),
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.all(10),
                 
-                color: const Color.fromARGB(255, 235, 235, 235),
+                // color: const Color.fromARGB(255, 235, 235, 235),
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -65,7 +66,7 @@ class Categeories extends StatelessWidget {
                           width: 90,
                           height: 90,
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 0),
                         Text(
                           Name[index],
                           style: TextStyle(
@@ -82,16 +83,16 @@ class Categeories extends StatelessWidget {
           ),
            SizedBox(height: 300,),
           Positioned(
-            bottom: 0, // Place the row at the bottom
+            bottom: -5, // Place the row at the bottom
             left: 0,
             right: 0,
             child: Container(
-              color: Colors.white, // Background color of the row
-               padding: EdgeInsets.only(top: 20),
+              // color: Colors.white, // Background color of the row
+               padding: EdgeInsets.only(top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset('assets/d2.jpeg',width: 390,)
+                  Image.asset('assets/d2.jpeg',width: 350,)
                 ],
               ),
             ),
