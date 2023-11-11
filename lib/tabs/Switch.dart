@@ -7,7 +7,7 @@ class SwitchTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: appBar()
+      body: appBar(context)
     );
   }
 }

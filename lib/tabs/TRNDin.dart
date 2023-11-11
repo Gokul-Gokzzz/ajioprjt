@@ -15,7 +15,7 @@ class TRNDin extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       body: Column(
         children: [SingleChildScrollView(
           scrollDirection: Axis.horizontal,

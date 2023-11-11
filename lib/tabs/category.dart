@@ -66,7 +66,7 @@ class Categeories extends StatelessWidget {
                           width: 90,
                           height: 90,
                         ),
-                        SizedBox(height: 0),
+                        
                         Text(
                           Name[index],
                           style: TextStyle(

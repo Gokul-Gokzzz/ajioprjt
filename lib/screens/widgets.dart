@@ -1,14 +1,16 @@
 
 
+import 'package:ajio/screens/shop.dart';
+import 'package:ajio/screens/wishlist.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
 
-final _carouselController = CarouselController();
+final PageController _pageController = PageController();
 
- appBar(){
+ appBar(context){
   return  AppBar(
         title: Container(
           
@@ -31,9 +33,17 @@ final _carouselController = CarouselController();
         actions: [
            Icon(Icons.notifications_none_outlined),
            SizedBox(width: 10,),
-           Icon(Icons.favorite_outline_rounded),
-           SizedBox(width: 10,),
-           Icon(Icons.shopping_bag_outlined)
+
+            IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder:(context)=>WishListScreen()));
+          },
+           icon:Icon(Icons.favorite_outline_rounded)
+           ),
+           IconButton(onPressed:(){
+            Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext)=>Cart()));
+           }, icon: Icon(Icons.shopping_bag_outlined)),
+         
+           
         ],
         
       );
@@ -248,44 +258,11 @@ final _carouselController = CarouselController();
 
 }
 
-
-
-// Widget slide({required carouselimage,required double height}){
-//   return  CarouselSlider.builder(
-//             itemCount: carouselimage.length,
-//              itemBuilder:(context , index , realindex){
-//               final images = carouselimage[index];
-//               return Container(
-//                 width: double.infinity,
-//                 color: Colors.grey,
-//                 child: Image.asset(images , fit: BoxFit.fill,
-//                 ),
-//               );
-//              },
-//               options: CarouselOptions(
-//                 height: height,
-//                 autoPlay: true,
-//                 viewportFraction: 1,
-//                 onPageChanged: (index,reason){
-               
-//                 }
-                
-//               ) 
-//               );
-//               Positioned(
-//                 bottom: 10.0,
-//                 left: 0,
-//                 right: 0,
-//                 child: SmoothPageIndicator(
-//                   controller: ,
-//                    count: count))
-// }
-
 Widget slide({required carouselimage, required double height}) {
   return Stack(
     children: [
       CarouselSlider.builder(
-        carouselController: _carouselController,
+         carouselController: CarouselController(),
         itemCount: carouselimage.length,
         itemBuilder: (context, index, realindex) {
           final images = carouselimage[index];
@@ -303,16 +280,16 @@ Widget slide({required carouselimage, required double height}) {
           autoPlay: true,
           viewportFraction: 1,
           onPageChanged: (index, reason) {
-            // Handle page change if needed
+           
           },
         ),
       ),
       Positioned(
-        bottom: 10.0, // Adjust the position as needed
+        bottom: 10.0, 
         left: 150,
         right: 0,
         child: SmoothPageIndicator(
-          controller: PageController(), // Replace with your CarouselSlider controller
+          controller: _pageController, 
           count: carouselimage.length,
           effect: JumpingDotEffect(
             dotColor: Colors.grey,
@@ -328,11 +305,21 @@ Widget slide({required carouselimage, required double height}) {
           
           
         ),
+      
       ),
     ],
   );
 }
 
+ Widget indicator (List<String> carouselimage)=>AnimatedSmoothIndicator(
+    activeIndex: 0,
+ count: carouselimage.length,
+ effect: JumpingDotEffect(
+  dotWidth: 8,
+  dotHeight: 8,
+  activeDotColor: Colors.amber,dotColor: Colors.white
+ ),
+ );
 
 
 
@@ -479,6 +466,101 @@ exploreImage() {
             )
           ],
         ),
+      )
+    ],
+  );
+}
+
+
+Widget WishlistItem(String imagePath, text1, text2, prize, mrp, off) {
+  return Column(
+    children: [
+      Container(
+        // margin: EdgeInsets.symmetric(horizontal: 5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        width: 170,
+        height: 220,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image(
+            image: AssetImage(imagePath),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      wishListDetail(text1, text2, prize, mrp, off)
+    ],
+  );
+}
+
+Widget wishListDetail(text1, text2, prize, mrp, off) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(text1),
+      SizedBox(
+        height: 5,
+      ),
+      Text(
+        text2,
+        style: TextStyle(fontWeight: FontWeight.w300),
+      ),
+      SizedBox(
+        height: 5,
+      ),
+      Row(
+        children: [
+          Text(
+            '₹${prize} ',
+            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+          ),
+          Text(
+            '₹${mrp} ',
+            style: TextStyle(
+                decoration: TextDecoration.lineThrough,
+                fontSize: 13,
+                fontWeight: FontWeight.w300),
+          ),
+          Text(
+            '${off}% off ',
+            style: TextStyle(
+                color: Colors.green, fontSize: 13, fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
+      SizedBox(
+        height: 5,
+      ),
+      Row(
+        children: [
+          Container(
+            width: 30,
+            height: 30,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(7),
+              border: Border.all(color: Colors.black),
+            ),
+            child: Icon(Icons.delete_outline_rounded),
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          ElevatedButton.icon(
+              style: ButtonStyle(
+                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7))),
+                  backgroundColor: MaterialStatePropertyAll(Colors.black)),
+              onPressed: () {},
+              icon: Icon(
+                Icons.shopping_bag_outlined,
+              ),
+              label: Text("Add To Bag"))
+        ],
       )
     ],
   );
