@@ -4,6 +4,7 @@ import 'package:ajio/screens/shop.dart';
 import 'package:ajio/screens/wishlist.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
@@ -476,7 +477,6 @@ Widget WishlistItem(String imagePath, text1, text2, prize, mrp, off) {
   return Column(
     children: [
       Container(
-        // margin: EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -565,3 +565,5 @@ Widget wishListDetail(text1, text2, prize, mrp, off) {
     ],
   );
 }
+
+ 

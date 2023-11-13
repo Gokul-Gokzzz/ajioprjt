@@ -30,7 +30,7 @@ class _notificationState extends State<notification> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 45),
+            padding: const EdgeInsets.only(left: 25),
             child: Row(
               children: [
                 Container(
@@ -69,7 +69,7 @@ class _notificationState extends State<notification> {
                 Container(
                   width: 80,
                   decoration: BoxDecoration(
-                    color: Colors.yellow,
+                    color: Colors.red,
                   ),
                 ),
                 Container(
