@@ -1,3 +1,4 @@
+import 'package:ajio/screens/shop.dart';
 import 'package:ajio/screens/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,9 @@ class WishListScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
-          Icon(Icons.shopping_bag_outlined)
+          IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Cart()));
+          }, icon: Icon(Icons.shopping_bag_outlined))
         ],
       ),
       body: Padding(
