@@ -1,5 +1,6 @@
 
 
+import 'package:ajio/screens/noti.dart';
 import 'package:ajio/screens/shop.dart';
 import 'package:ajio/screens/wishlist.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -32,8 +33,11 @@ final PageController _pageController = PageController();
           ),
         ),
         actions: [
-           Icon(Icons.notifications_none_outlined),
-           SizedBox(width: 10,),
+           IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>notification()));
+           },
+            icon:Icon(Icons.notifications_none_outlined),
+            ),
 
             IconButton(onPressed: (){
             Navigator.of(context).push(MaterialPageRoute(builder:(context)=>WishListScreen()));
